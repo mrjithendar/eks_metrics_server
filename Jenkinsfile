@@ -18,6 +18,7 @@ pipeline {
         stage('Deploy Metrics Server') {
             steps {
                 withAWS(credentials: 'awsCreds', region: 'us-east-1') {
+                    // for more details visit: https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html
                     sh "kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml"
                 }
             }
